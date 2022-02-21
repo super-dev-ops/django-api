@@ -32,29 +32,19 @@ jobs:
         touch devops/.env
         echo "SECRET_KEY='$DJANGO_SECRET_KEY'" > devops/.env
     - name: Setup Secrets DB USER
-      env: |
+      env: 
+        DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         DATABASE_USER: ${{ secrets.DJANGO_DATABASE_USER }}
+        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+        DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
       run: |
         touch devops/.env
-        echo "DATABASE_USER='$DATABASE_USER'" >> devops/.env
-    - name: Setup Secrets DB PASSWORD
-      env: |
-        DATABASE_PASSWORD: ${{ secrets.DJANGO_DATABASE_PASSWORD }}
-      run: |
-        touch devops/.env
-        echo "DATABASE_PASSWORD='$DATABASE_PASSWORD'" >> devops/.env
-    - name: Setup Secrets DATABASE_HOST
-      env: |
-        DATABASE_HOST: ${{ secrets.DJANGO_DATABASE_HOST }}
-      run: |
-        touch devops/.env
-        echo "DATABASE_HOST='$DATABASE_HOST'" >> devops/.env
-    - name: Setup Secrets DATABASE_PORT
-      env: |
-        DATABASE_PORT: ${{ secrets.DJANGO_DATABASE_PORT }}
-      run: |
-        touch devops/.env
-        echo "DATABASE_PORT='$DATABASE_PORT'" >> devops/.env
+        echo "SECRET_KEY='$DJANGO_SECRET_KEY'" > devops/.env
+        echo "DATABASE_USER='$DATABASE_USER'" > devops/.env
+        echo "DATABASE_PASSWORD='$DATABASE_PASSWORD'" > devops/.env
+        echo "DATABASE_HOST='$DATABASE_HOST'" > devops/.env
+        echo "DATABASE_PORT='$DATABASE_PORT'" > devops/.env
     - name: Run Tests
       run: |
         python manage.py test
