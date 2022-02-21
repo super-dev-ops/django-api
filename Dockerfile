@@ -20,8 +20,8 @@ RUN apt install python3-pip -y
 COPY requirements.txt /src/files/requirements.txt
 RUN pip install -r /src/files/requirements.txt
 COPY . /src
-RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate
+RUN python3 /src/manage.py makemigrations
+RUN python3 /src/manage.py migrate
 # Expose Port for the Application 
 EXPOSE 8080
 
