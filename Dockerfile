@@ -10,7 +10,7 @@ LABEL description="This is custom Docker Image created with GitHub actions and c
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Ubuntu Software repository
-RUN apt update && apt-get install -y --no-install-recommends apt-utils; mkdir -p /src; mkdir -p /src/files
+RUN apt update && apt install -y --no-install-recommends apt-utils; mkdir -p /src; mkdir -p /src/files
 
 RUN apt install postgresql-client  -y
 RUN apt install python3 -y

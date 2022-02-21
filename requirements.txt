@@ -18,7 +18,6 @@ Markdown
 packaging
 Pillow
 pluggy
-psycopg2
 psycopg2-binary
 py
 pyparsing
